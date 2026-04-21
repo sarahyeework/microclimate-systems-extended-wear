@@ -1,0 +1,24 @@
+scenario,baseline_wear_days,moisture_control,friction_reduction,coverage_type,notes
+astronaut_baseline,2,0.2,0.2,full,current ISS-like usage
+astronaut_optimized,2,0.7,0.6,optimized,engineered full system
+astronaut_partial,2,0.8,0.5,partial,targeted coverage zones
+
+emt_shift,1.5,0.5,0.4,full,12-24 hr shifts limited changes
+emt_optimized,1.5,0.7,0.6,optimized,improved moisture + fit for long wear
+
+stroke_patient,1,0.6,0.3,optimized,reduced sensation higher skin risk
+diabetic_foot,1,0.7,0.4,optimized,ulcer prevention moisture control critical
+
+climber_minimal,1.5,0.8,0.6,partial,prioritize sensitivity reduced bulk
+athlete_training,1.2,0.6,0.7,optimized,repetitive motion friction management
+
+elderly_balance,1.5,0.5,0.3,optimized,enhanced tactile feedback for stability
+
+step_counting_basic,1.5,0.5,0.4,full,baseline wearable integration limited accuracy
+step_counting_embedded,1.5,0.6,0.5,optimized,embedded sensors improve signal consistency
+
+foot_drop_baseline,1,0.4,0.3,full,limited dorsiflexion support gait instability
+foot_drop_assistive,1,0.6,0.5,optimized,compression + structure to assist foot positioning
+
+military_field,1.5,0.4,0.5,full,long duration load bearing high friction
+military_optimized,1.5,0.7,0.6,optimized,improved durability + moisture control under load
