@@ -1,8 +1,25 @@
 # Microclimate Systems for Extended Wear
 
-This repository explores how extended-wear sock design can improve wear tolerance and reduce replacement burden in constrained environments such as space.
+This repository explores how extended-wear textile systems—starting with socks—can improve wear tolerance and reduce replacement burden in constrained environments such as space.
 
-Rather than optimizing a single material property, this project models how small textile changes may translate into system-level outcomes including wear duration, mass, and waste.
+Rather than optimizing a single material property, this project models how **small textile design changes propagate through physiological, behavioral, and system-level constraints** to influence:
+
+- wear duration  
+- replacement frequency  
+- total mass and waste  
+
+---
+
+## Core Thesis
+
+In many environments, garments are not replaced when they fail materially—but when humans stop tolerating them.
+
+> **Wear tolerance—not durability—is the primary constraint.**
+
+This repository models wear tolerance as a function of:
+- textile design  
+- physiological response  
+- behavioral limits  
 
 ---
 
@@ -10,23 +27,26 @@ Rather than optimizing a single material property, this project models how small
 
 In space, clothing is a consumable system.
 
-- Astronauts wear garments for multiple days without laundering
-- Clothing is replaced based on discomfort, odor, or skin irritation
-- Each astronaut uses ~150 lbs of clothing per year
+- Astronauts wear garments for multiple days without laundering  
+- Clothing is replaced based on discomfort, odor, or irritation  
+- Each astronaut uses ~150 lbs of clothing per year  
 
-This creates a constraint where **wear tolerance—not material durability—determines replacement frequency**.
+This creates a system where:
+
+> replacement frequency is driven by human tolerance, not material lifespan
 
 ---
 
 ## Why the Foot
 
-The foot is a high-contact, high-stress interface:
+The foot is a high-contact, high-risk interface:
 
-- continuous contact with surfaces or footwear
-- localized pressure and shear
-- heat and moisture accumulation over time
+- continuous contact with surfaces or footwear  
+- localized pressure and shear  
+- heat and moisture accumulation  
+- high contribution to overall discomfort  
 
-Socks are also a major driver of replacement cycles, making them a high-leverage starting point.
+Socks are also a primary driver of replacement cycles, making them a high-leverage intervention point.
 
 ---
 
@@ -38,59 +58,90 @@ This project explores multiple design strategies:
 - Targeted compression → stabilize fit and support circulation  
 - Moisture-gradient knit → regulate skin environment  
 - Split-toe structures → reduce inter-toe friction  
-- Grip surfaces → improve contact stability in low-gravity  
+- Grip surfaces → improve contact stability (especially in low-gravity)  
 - Partial coverage (“toe koozie” concept) → isolate high-friction zones  
 
 ---
 
-## The "Toe Koozie" Hypothesis
+## Selective Coverage (“Toe Koozie”) Hypothesis
 
-Astronaut anecdotes describe the use of partial socks that protect only high-contact areas, sometimes referred to informally as "toe koozies."
+Astronaut anecdotes describe the use of partial socks protecting only high-contact areas, sometimes referred to informally as “toe koozies.”
 
-This suggests a key design insight:
+This suggests a broader design hypothesis:
 
-> Full-foot coverage may not always be optimal. Targeted protection of high-stress regions may improve comfort and extend wear tolerance.
+> **Full-foot coverage may introduce unnecessary thermal and moisture load, while targeted protection may extend wear tolerance.**
 
-This project treats partial coverage as a **testable hypothesis**, not a validated solution.
+This project treats selective coverage as a **testable systems hypothesis**, not a validated solution.
 
 ---
 
-## Study Approach (In Progress)
+## Model Architecture
 
-We propose a randomized crossover wear study comparing:
+This repository models wear tolerance across three interacting layers:
 
-- baseline sock systems  
+### 1. Textile → Physiology Model (`textile_to_physiology_model.py`)
+Maps textile properties to physiological response:
+
+- moisture load  
+- thermal load  
+- friction and pressure  
+- circulation effects  
+
+→ outputs: **discomfort + physiological strain**
+
+---
+
+### 2. Behavioral Model (“Ick Factor”) (`ick_factor_model.py`)
+Informally named, but intentionally included.
+
+Models the point at which users discontinue wear due to:
+
+- odor  
+- moisture perception  
+- contamination (including debris accumulation)  
+- sensory irritation  
+- environmental risk (e.g., mold, trapped moisture)  
+
+> In practice, garments are often removed due to perception, not failure.
+
+This layer captures **real-world behavioral limits** that override otherwise acceptable system performance.
+
+---
+
+### 3. System / Mission Model (`model.py`)
+Translates wear tolerance into system-level outcomes:
+
+- replacement frequency  
+- total garment count  
+- total mass  
+
+→ connects human experience to mission logistics
+
+---
+
+## Study Approach (Conceptual)
+
+We propose a randomized crossover wear framework comparing:
+
+- baseline systems  
 - optimized full-coverage designs  
-- targeted / partial coverage designs  
+- selective/partial coverage designs  
 
-Primary measurements:
+**Primary endpoint:**
 
-- wear duration (time until voluntary removal)  
-- localized discomfort / hotspot formation  
-- skin temperature and humidity  
-- subjective comfort  
+> time to voluntary removal (wear tolerance)
 
-Failure is defined as:
-> the point at which a user chooses to stop wearing the system
+Supporting measurements:
+
+- localized discomfort  
+- temperature and moisture  
+- subjective experience  
 
 ---
 
 ## Mission Impact Model
 
-We model how changes in wear duration affect system-level outcomes.
-
-### Variables:
-- mission duration (days)  
-- crew size  
-- days per pair (wear tolerance)  
-- mass per pair  
-
-### Outputs:
-- total pairs required  
-- total clothing mass  
-- reduction vs baseline  
-
-### Example:
+Small increases in wear tolerance scale nonlinearly across mission duration.
 
 | Condition  | Days per Pair | Total Pairs | Total Mass |
 |-----------|--------------|------------|------------|
@@ -98,13 +149,11 @@ We model how changes in wear duration affect system-level outcomes.
 | Optimized | 5            | 216        | 12.9 kg    |
 | Reduction | —            | ↓ 60%      | ↓ 19.5 kg  |
 
-Small increases in wear tolerance scale nonlinearly across mission duration.
-
 ---
 
 ## Healthcare & Human Systems (Bridge Evidence)
 
-Although this project is not a clinical study, existing literature provides relevant mechanisms:
+Existing literature supports relevant mechanisms:
 
 ### Plantar Pressure & Tissue Risk
 - uneven pressure distribution contributes to skin breakdown and ulcer formation  
@@ -118,47 +167,82 @@ Although this project is not a clinical study, existing literature provides rele
 - the foot contributes to balance and spatial awareness  
 - compression and tactile feedback may improve stability in low-feedback environments  
 
-These findings suggest that sock systems are not purely passive:
-> they influence both skin health and human performance
+**Implication:**
+
+> textile systems influence both skin health and human performance
 
 ---
 
-## Cross-Domain Context
+## Cross-Domain Applications
 
-Across domains, sock systems are adapted to environmental constraints:
+This model extends beyond space:
 
-- astronauts → thermal, low-traction systems  
-- firefighters → heat-resistant, breathable systems  
-- military → compression + cushioning under load  
-- athletes → targeted padding and support  
-- climbers → minimal or partial coverage for sensitivity  
+- **Military / field use** → long-duration load-bearing wear  
+- **First responders / EMTs** → extended shifts without change  
+- **Clinical populations (e.g., stroke, diabetic foot)** → skin integrity + support  
+- **Athletics (running, climbing)** → friction + performance tradeoffs  
+- **Wearable sensing (e.g., step counting)** → signal stability depends on fit and contact  
 
-This supports a broader principle:
-> sock performance is context-dependent, not one-size-fits-all
+**Core principle:**
+
+> foot-interface design is context-dependent and system-level
 
 ---
 
 ## Why Wearables Often Fail
 
-Many wearable and assistive systems fail despite strong technical capability.
+Many wearable systems fail not because they don’t work—but because people stop wearing them.
 
-Common issues include:
-- low long-term wear compliance  
-- discomfort or maintenance burden  
-- lack of integration into daily routines  
-- sensing without actionable outcomes  
+Common failure modes:
+
+- discomfort  
+- maintenance burden  
+- poor integration into daily behavior  
 
 This project focuses on:
-> extending wear tolerance as the primary constraint
+
+> **extending wear tolerance as the primary adoption constraint**
+
+---
+
+## Personal Motivation (Yes, This Is a Real Problem)
+
+This work is partly informed by firsthand experience in extended-wear, high-load environments.
+
+During field use (e.g., ROTC rucks carrying ~1/3 body weight), socks often became saturated and physically uncomfortable—but still technically wearable. Blisters and pressure could be tolerated.
+
+What could not be tolerated was the **psychological discomfort**:
+
+- wet fabric sloshing inside the shoe  
+- loss of fit and stability  
+- buildup of heat, friction, and general “grossness”  
+
+The workaround was not elegant:
+
+- double socking  
+- improvised compression (e.g., using hair ties to reduce heel gapping)  
+- constant adjustment to regain stability  
+
+This happened before having any formal framework for:
+
+- compression zones  
+- moisture management  
+- fit optimization  
+
+In retrospect, this is exactly what the model captures:
+
+> people don’t stop wearing systems when they fail—they stop when they become intolerable
+
+Similarly, while astronauts may adapt behaviorally (e.g., going barefoot or using toes for grip), this project assumes those are **short-term adaptations, not scalable design solutions**.
 
 ---
 
 ## Current Status
 
 - Concept development complete  
-- Design directions defined  
-- Mission impact model established  
-- Materials validation and wear testing in progress  
+- Model architecture defined (textile → physiology → behavior → system)  
+- Scenario modeling and visualization (Tableau, hypothetical data)  
+- Materials exploration informed by external inputs  
 
 This repository represents an **in-progress system model**, not a finalized product.
 
@@ -166,23 +250,28 @@ This repository represents an **in-progress system model**, not a finalized prod
 
 ## Future Work
 
-- Validate partial vs full coverage performance  
-- Refine wear tolerance metrics  
-- Expand model to include spatial failure distribution  
+- Validate selective vs full coverage designs  
+- Incorporate spatial (foot-region) failure modeling  
 - Integrate real-world wear data  
-- Explore translation to terrestrial and accessibility-focused applications  
+- Expand behavioral modeling (compliance, perception)  
+- Explore clinical and accessibility-focused applications  
 
 ---
 
 ## Summary
 
-This project reframes sock design as a system problem:
+This project reframes textile design as a human-system problem:
 
-> how long a human can tolerate wearing a garment
+> **how long a person can tolerate wearing something**
 
-By modeling wear tolerance, we connect textile design to:
-- human comfort  
+By modeling wear tolerance across:
+
+- physiology  
+- perception  
+- environment  
+
+we connect design decisions to:
+
+- human experience  
 - system efficiency  
-- mission-level outcomes  
-
----
+- real-world adoption  
